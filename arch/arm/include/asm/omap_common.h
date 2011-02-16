@@ -25,6 +25,9 @@
 #ifndef	_OMAP_COMMON_H_
 #define	_OMAP_COMMON_H_
 
+/* Max value for DPLL multiplier M */
+#define OMAP_DPLL_MAX_N	127
+
 /* extract a bit field from a bit vector */
 #define get_bit_field(nr, start, mask)\
 	(((nr) & (mask)) >> (start))
