@@ -51,6 +51,27 @@
 		       (addr));\
 	} while (0);
 
+/* find log2 of number n - rounded up */
+static inline u32 log_2_n_round_up(u32 n)
+{
+	u32 clz;
+	/* count leading zeros */
+	asm volatile ("CLZ %0, %1" : "=r" (clz) : "r" (n));
+	if (n & (n - 1))
+		return 31 - clz; /* power of 2 */
+	else
+		return 32 - clz; /* not power of 2 - round up */
+}
+
+/* find log2 of number n - rounded down */
+static inline u32 log_2_n_round_down(u32 n)
+{
+	u32 clz;
+	/* count leading zeros */
+	asm volatile ("CLZ %0, %1" : "=r" (clz) : "r" (n));
+	return 31 - clz;
+}
+
 /* Boot device */
 #define BOOT_DEVICE_NONE	0
 #define BOOT_DEVICE_XIP		1
