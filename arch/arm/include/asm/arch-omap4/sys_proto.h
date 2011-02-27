@@ -23,6 +23,7 @@
 
 #include <asm/arch/omap4.h>
 #include <asm/io.h>
+#include <asm/omap_common.h>
 
 struct omap_sysinfo {
 	char *board_string;
