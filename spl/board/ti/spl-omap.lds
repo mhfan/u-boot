@@ -51,6 +51,7 @@ SECTIONS
 	. = ALIGN(4);
 	__image_copy_end = .;
 	__flash_image_end = .;
+	_end = .;
 
 	.bss :
 	{
@@ -58,6 +59,6 @@ SECTIONS
 		__bss_start = .;
 		*(.bss*)
 		. = ALIGN(4);
-		_end = .;
+		__bss_end__ = .;
 	} >.sdram
 }
