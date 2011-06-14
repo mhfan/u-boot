@@ -21,6 +21,9 @@
 # MA 02111-1307 USA
 #
 
+#CROSS_COMPILE ?= arm-none-eabi-
+CROSS_COMPILE ?= arm-none-linux-gnueabi-
+CROSS_COMPILE ?= arm-linux-gnueabi-
 CROSS_COMPILE ?= arm-linux-
 
 ifndef CONFIG_STANDALONE_LOAD_ADDR
