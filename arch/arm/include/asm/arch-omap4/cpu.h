@@ -133,6 +133,7 @@ struct watchdog {
 
 /* GPMC BASE */
 #define GPMC_BASE		(OMAP44XX_GPMC_BASE)
+#define GPMC_MAX_CS	8	/* max number of GPMC Chip Selects */
 
 /* I2C base */
 #define I2C_BASE1		(OMAP44XX_L4_PER_BASE + 0x70000)
