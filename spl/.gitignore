@@ -1,0 +1,4 @@
+/board/ti/panda/*.c
+/board/ti/panda/*.h
+/board/ti/panda/*.S
+/u-boot-spl*
