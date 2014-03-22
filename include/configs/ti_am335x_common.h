@@ -28,6 +28,7 @@
 #define CONFIG_SYS_NS16550_CLK		48000000
 
 /* Network defines. */
+#if 0	/* XXX: */
 #define CONFIG_CMD_NET			/* 'bootp' and 'tftp' */
 #define CONFIG_CMD_DHCP
 #define CONFIG_CMD_MII
@@ -40,6 +41,7 @@
 #define CONFIG_CMD_PING
 #define CONFIG_DRIVER_TI_CPSW		/* Driver for IP block */
 #define CONFIG_MII			/* Required in net/eth.c */
+#endif	/* mhfan */
 
 /*
  * SPL related defines.  The Public RAM memory map the ROM defines the

@@ -66,6 +66,7 @@
 	"bootfile=zImage\0" \
 	"fdtfile=undefined\0" \
 	"console=ttyO0,115200n8\0" \
+	"silent=no\0verify=no\0" \
 	"optargs=\0" \
 	"dfu_alt_info_mmc=" DFU_ALT_INFO_MMC "\0" \
 	"dfu_alt_info_emmc=rawemmc mmc 0 3751936\0" \
@@ -199,6 +200,7 @@
 #define CONFIG_SPL_POWER_SUPPORT
 #define CONFIG_SPL_YMODEM_SUPPORT
 
+#if 0	/* XXX: */
 /* CPSW support */
 #define CONFIG_SPL_ETH_SUPPORT
 
@@ -207,16 +209,19 @@
 
 /* General network SPL, both CPSW and USB gadget RNDIS */
 #define CONFIG_SPL_NET_SUPPORT
+#endif	/* mhfan */
 #define CONFIG_SPL_ENV_SUPPORT
 #define CONFIG_SPL_NET_VCI_STRING	"AM335x U-Boot SPL"
 
 /* SPI flash. */
+#if 0 	/* XXX: */
 #define CONFIG_SPL_SPI_SUPPORT
 #define CONFIG_SPL_SPI_FLASH_SUPPORT
 #define CONFIG_SPL_SPI_LOAD
 #define CONFIG_SPL_SPI_BUS		0
 #define CONFIG_SPL_SPI_CS		0
 #define CONFIG_SYS_SPI_U_BOOT_OFFS	0x20000
+#endif	/* mhfan */
 
 #define CONFIG_SPL_LDSCRIPT		"$(CPUDIR)/am33xx/u-boot-spl.lds"
 
@@ -268,6 +273,7 @@
 #define CONFIG_USBDOWNLOAD_GADGET
 #define CONFIG_USB_GADGET_DUALSPEED
 #define CONFIG_USB_GADGET_VBUS_DRAW	2
+
 #define CONFIG_MUSB_HOST
 #define CONFIG_AM335X_USB0
 #define CONFIG_AM335X_USB0_MODE	MUSB_PERIPHERAL
@@ -280,9 +286,11 @@
 #endif
 
 #ifdef CONFIG_MUSB_GADGET
+#ifndef CONFIG_SPL_BUILD
 #define CONFIG_USB_ETHER
 #define CONFIG_USB_ETH_RNDIS
 #define CONFIG_USBNET_HOST_ADDR	"de:ad:be:af:00:00"
+#endif	/* XXX: mhfan */
 
 /* USB TI's IDs */
 #define CONFIG_G_DNL_VENDOR_NUM 0x0403
@@ -431,5 +439,11 @@
 					"4m(kernel),-(rootfs)"
 #endif
 #endif  /* NOR support */
+
+#if 1 	/* XXX: */
+#undef CONFIG_CMD_NET
+#undef CONFIG_CMD_NFS
+#undef CONFIG_CMD_LOADS
+#endif	/* mhfan */
 
 #endif	/* ! __CONFIG_AM335X_EVM_H */

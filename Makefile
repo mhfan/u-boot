@@ -160,6 +160,9 @@ endif
 include $(obj)include/config.mk
 export	ARCH CPU BOARD VENDOR SOC
 
+ARCH 		?= arm
+CROSS_COMPILE 	?= arm-linux-gnueabihf-
+
 # set default to nothing for native builds
 ifeq ($(HOSTARCH),$(ARCH))
 CROSS_COMPILE ?=

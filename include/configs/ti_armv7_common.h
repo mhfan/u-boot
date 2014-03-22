@@ -42,7 +42,7 @@
 /*
  * Default to a quick boot delay.
  */
-#define CONFIG_BOOTDELAY		3
+#define CONFIG_BOOTDELAY		1
 
 /*
  * DDR information.  We say (for simplicity) that we have 1 bank,
@@ -117,7 +117,7 @@
 #define CONFIG_VERSION_VARIABLE
 
 /* We set the max number of command args high to avoid HUSH bugs. */
-#define CONFIG_SYS_MAXARGS		64
+#define CONFIG_SYS_MAXARGS		32
 
 /* Console I/O Buffer Size */
 #define CONFIG_SYS_CBSIZE		512
@@ -157,8 +157,9 @@
 #if defined(CONFIG_MMC) || defined(CONFIG_USB_STORAGE)
 #define CONFIG_DOS_PARTITION
 #define CONFIG_CMD_FAT
+#ifndef CONFIG_SPL_BUILD
 #define CONFIG_FAT_WRITE
-#define CONFIG_CMD_EXT2
+#endif
 #define CONFIG_CMD_EXT4
 #define CONFIG_CMD_FS_GENERIC
 #endif
@@ -202,7 +203,7 @@
 #define CONFIG_SPL_FAT_LOAD_PAYLOAD_NAME	"u-boot.img"
 
 #ifdef CONFIG_SPL_OS_BOOT
-#define CONFIG_SYS_SPL_ARGS_ADDR		(CONFIG_SYS_SDRAM_BASE + 0x100)
+#define CONFIG_SYS_SPL_ARGS_ADDR	(CONFIG_SYS_SDRAM_BASE + 0xf80000)
 
 /* FAT */
 #define CONFIG_SPL_FAT_LOAD_KERNEL_NAME		"uImage"

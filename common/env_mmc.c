@@ -70,7 +70,7 @@ static int init_mmc_for_env(struct mmc *mmc)
 	}
 
 	if (mmc_init(mmc)) {
-		puts("MMC init failed\n");
+		puts("MMC/env init failed\n");
 		return -1;
 	}
 
